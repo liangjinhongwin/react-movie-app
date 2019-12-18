@@ -83,7 +83,7 @@ const Discover = (props) => {
         <main>
             <section className="my-2">
                 <form onSubmit={handleSearch}>
-                    <div className="form-row d-flex justify-content-center">
+                    <div className="form-row d-flex justify-content-center align-items-baseline">
                         <div className="col-auto">
                             <label htmlFor="year">Year</label>
                             <input id="year" type="number" name="year" min="1920" max={props.releaseYear}placeholder="release year" defaultValue="2019" />
@@ -99,6 +99,7 @@ const Discover = (props) => {
                         <div className="col-auto">
                             <label>Sort By</label>
                             <select name="selectSorters">
+                                <option value=""></option>
                                 {dropDownSorterMenu()}
                             </select>
                         </div>
@@ -115,7 +116,7 @@ const Discover = (props) => {
 
 Discover.defaultProps = {
     releaseYear: new Date().getFullYear(),
-    sorter: "vote_average.desc",
+    sorter: "",
     genres: ""
 }
 

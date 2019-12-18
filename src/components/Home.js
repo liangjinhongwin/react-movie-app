@@ -40,11 +40,11 @@ const Home = (props) => {
 
     return (
         <main>
-            <section className="d-flex justify-content-between my-2">
+            <section className="d-flex justify-content-between align-items-baseline my-2">
                 <div>
                     <form onSubmit={handleChangeDisplay}>
                         <select name="selectDisplays">{dropDownDisplayMenu()}</select>
-                        <button className="btn btn-secondary" type="submit">Go</button>
+                        <button className="btn btn-secondary ml-1" type="submit">Go</button>
                     </form>
                 </div>
                 <SearchBar handleSearchBar={handleSearchBar} />

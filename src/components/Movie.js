@@ -110,7 +110,7 @@ const Movie = (props) => {
                 </div>
                 <div className="card-footer">
                     <form onSubmit={handleSubmit}>
-                        <div className="form-row d-flex justify-content-around">
+                        <div className="form-row d-flex justify-content-around align-item-baseline">
                             <div className="col-auto">
                                 <label htmlFor="checkbox-favourite">Favourite</label>
                                 <input id="checkbox-favourite" type="checkbox" checked={liked} onChange={handleCheck} />
