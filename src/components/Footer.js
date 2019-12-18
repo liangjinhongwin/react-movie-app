@@ -6,6 +6,7 @@ const Footer = () => {
 
     return (
         <footer className="text-center mt-2">
+            <hr />
             <p>&copy; {year} Jinhong Liang</p>
         </footer>
     );
