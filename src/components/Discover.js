@@ -20,7 +20,7 @@ const Discover = (props) => {
 
     useEffect(() => {
         const fetchMovies = async () => {
-            const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=e8f204ddbd3e76b6b335c89143c3f5dc&year=${releaseYear}&with_genres=${genres}&sort_by=${sorter}&page=1`);
+            const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=e8f204ddbd3e76b6b335c89143c3f5dc&year=${releaseYear}&with_genres=${genres}&sort_by=${sorter}&region=US&page=1`);
             let data = await res.json();
             setMovieData(data.results.slice(0, 12));
         }
