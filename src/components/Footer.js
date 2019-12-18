@@ -5,7 +5,7 @@ const Footer = () => {
     const year = date.getFullYear()
 
     return (
-        <footer className="text-center">
+        <footer className="text-center mt-2">
             <p>&copy; {year} Jinhong Liang</p>
         </footer>
     );
