@@ -20,7 +20,7 @@ const Discover = (props) => {
 
     useEffect(() => {
         const fetchMovies = async () => {
-            const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=e8f204ddbd3e76b6b335c89143c3f5dc&primary_release_year=${releaseYear}&with_genres=${genres}&sort_by=${sorter}&region=US&page=1`);
+            const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=e8f204ddbd3e76b6b335c89143c3f5dc&year=${releaseYear}&with_genres=${genres}&sort_by=${sorter}&region=US&page=1`);
             let data = await res.json();
             setMovieData(data.results.slice(0, 12));
         }
@@ -28,7 +28,7 @@ const Discover = (props) => {
     }, [releaseYear, genres, sorter]);
 
     const dropDownSorterMenu = () => {
-        let array = ["vote_average.desc", "vote_average.asc", "release_date.asc", "release_date.desc", "original_title.desc", "original_title.asc"];
+        let array = ["", "vote_average.desc", "vote_average.asc", "release_date.asc", "release_date.desc", "original_title.desc", "original_title.asc"];
         const sorters = array.map((sorter, i) =>
             <option key={i} value={sorter}>{sorter}</option>
         );
@@ -99,7 +99,6 @@ const Discover = (props) => {
                         <div className="col-auto">
                             <label>Sort By</label>
                             <select name="selectSorters">
-                                <option value=""></option>
                                 {dropDownSorterMenu()}
                             </select>
                         </div>
