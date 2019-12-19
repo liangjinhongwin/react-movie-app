@@ -14,11 +14,11 @@ const DisplayMovies = (props) => {
                     <p className="card-text text-nowrap overflow-auto">{movie.overview}</p>
                 </div>
                 <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Release date: {movie.release_date}</li>
-                    <li className="list-group-item">Rating: {movie.vote_average}</li>
+                    <li className="list-group-item"><strong>Release date</strong>: {movie.release_date}</li>
+                    <li className="list-group-item"><strong>Rating</strong>: {movie.vote_average}</li>
                 </ul>
                 <div className="card-footer d-flex justify-content-center">
-                    <Link to={{ pathname: `/movie/id=${movie.id}`, state: movie }}><button className="btn btn-primary">More Info</button></Link>
+                    <Link to={{ pathname: `/movie/id=${movie.id}`, state: movie }}><button className="btn btn-outline-info">More Info</button></Link>
                 </div>
             </div>
         </div>

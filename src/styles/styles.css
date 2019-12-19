@@ -1,0 +1,6 @@
+@media (min-width: 1000px) {
+  .wrapper {
+    background: url("../images/movie-bg.png") fixed no-repeat bottom;
+    background-size: contain;
+  }
+}

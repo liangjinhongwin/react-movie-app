@@ -5,46 +5,57 @@ import placeholder from '../images/not-found.png';
 const Movie = (props) => {
     const movie = props.location.state;
     const [liked, setLiked] = useState(false);
-    const [rating, setRating] = useState(null);
+    const [rating, setRating] = useState("");
 
     useEffect(() => {
-        const getStorage = (storageItem) => {
-            let items = localStorage.getItem(storageItem);
-            if (!items) {
+        const getMovie = (storageItem) => {
+            if (!localStorage.getItem(storageItem)) {
                 return;
             }
 
-            items = JSON.parse(items);
-            let item = findMovie(storageItem);
+            let items = getStorage(storageItem);
+            let item = items.find(item => item.movie.id === movie.id);
             if (!item) {
                 return;
             }
             setLiked(item.liked);
             setRating(item.rating);
         }
-        getStorage('movies');
-    }, [])
+        getMovie('movies');
+    }, [movie.id])
 
     const handleSearchBar = (title) => {
         return props.history.push({ pathname: `/search/query=${title}` });
     }
 
     const handleCheck = (e) => {
-        setLiked(e.target.checked);
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        let rating = e.target.rating.value;
-        setRating(rating);
+        let liked = e.target.checked;
+        setLiked(liked);
         let item = { movie: movie, liked: liked, rating: rating };
         if (!localStorage.getItem('movies')) {
             createStorage(item);
-            alert(`Movie ${item.movie.id} added.`);
         }
         else {
             addToStorage(item);
         }
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        let input = e.target.rating.value;
+        if (rating === "" && input === "") {
+            return;
+        }
+
+        setRating(input);
+        let item = { movie: movie, liked: liked, rating: input };
+        if (!localStorage.getItem('movies')) {
+            createStorage(item);
+        }
+        else {
+            addToStorage(item);
+        }
+        e.target.rating.value="";
     }
 
     // Create Storage
@@ -60,38 +71,28 @@ const Movie = (props) => {
         items = JSON.parse(items);
         if (!items.find(item => item.movie.id === newItem.movie.id)) {
             items.push(newItem)
-            alert(`Movie ${newItem.movie.id} added.`);
         }
         else {
             items.find(item => item.movie.id === newItem.movie.id).liked = newItem.liked;
             items.find(item => item.movie.id === newItem.movie.id).rating = newItem.rating;
-            alert(`Movie ${newItem.movie.id} updated.`);
         }
         items = JSON.stringify(items);
         localStorage.setItem('movies', items);
     }
 
-    // Get movie from Storage
-    const findMovie = (storageItem) => {
-        if (!localStorage.getItem(storageItem)) {
-            return;
-        }
-
+    // Get Storage
+    const getStorage = (storageItem) => {
         let items = localStorage.getItem(storageItem);
         items = JSON.parse(items);
-
-        let item = items.find(item => item.movie.id === movie.id);
-        if (!item) {
-            return;
-        }
-        return item;
+        return items;
     }
 
     return (
         <main>
-            <section className="d-flex justify-content-end my-2">
+            <section className="d-flex justify-content-end pt-3">
                 <SearchBar handleSearchBar={handleSearchBar} />
             </section>
+            <hr />
             <section>
                 <figure className="d-flex justify-content-center">
                     {(movie.poster_path) ?
@@ -102,28 +103,31 @@ const Movie = (props) => {
                     <ul className="list-group list-group-flush">
                         <li className="list-group-item list-group-item-info text-center"><strong>{movie.title}</strong></li>
                         <li className="list-group-item">{movie.overview}</li>
-                        <li className="list-group-item">Release date: {movie.release_date}</li>
-                        <li className="list-group-item">Rating: {movie.vote_average}</li>
-                        {(liked === true) && <li className="list-group-item bg-warning"> Your liked this movie!</li>}
-                        {(rating && rating !== "") && <li className="list-group-item bg-warning">Your Rating: {rating} (out of 10)</li>}
+                        <li className="list-group-item"><strong>Release date</strong>: {movie.release_date}</li>
+                        <li className="list-group-item"><strong>Rating</strong>: {movie.vote_average}</li>
+                        {(liked === true) && <li className="list-group-item bg-warning"><strong>Your liked this movie!</strong></li>}
+                        {(rating !== "") && <li className="list-group-item bg-warning"><strong>Your Rating</strong>: {rating} (out of 10)</li>}
+                        <li className="list-group-item">
+                            <form onSubmit={handleSubmit}>
+                                <div className="form-row d-flex justify-content-center">
+                                    <div className="col-auto">
+                                        <input className="d-none" id="checkbox-favourite" type="checkbox" checked={liked} onChange={handleCheck} />
+                                        {(liked === true) ? <label className="btn btn-danger" htmlFor="checkbox-favourite">&#10006; Unlike</label> : <label className="btn btn-danger" htmlFor="checkbox-favourite">&hearts; Like</label>}
+                                    </div>
+                                    {(rating === "") ?
+                                        <div className="col-auto">
+                                            <input type="number" name="rating" min="0" max="10" placeholder="Rating" required />
+                                            <button type="submit" className="btn btn-warning ml-1">&#10004; Rate</button>
+                                        </div> :
+                                        <div className="col-auto">
+                                            <input  type="number" className="d-none" name="rating" />
+                                            <button type="submit" className="btn btn-warning">&#10006; Remove rating</button>
+                                        </div>
+                                    }
+                                </div>
+                            </form>
+                        </li>
                     </ul>
-                </div>
-                <div className="card-footer">
-                    <form onSubmit={handleSubmit}>
-                        <div className="form-row d-flex justify-content-around align-item-baseline">
-                            <div className="col-auto">
-                                <label htmlFor="checkbox-favourite">Favourite</label>
-                                <input id="checkbox-favourite" type="checkbox" checked={liked} onChange={handleCheck} />
-                            </div>
-                            <div className="col-auto">
-                                <label htmlFor="text-rating">Your Rating</label>
-                                <input id="text-rating" type="number" name="rating" min="0" max="10" placeholder="rating" defaultValue={rating} />
-                            </div>
-                            <div className="col-auto">
-                                <button type="submit" className="btn btn-primary">Update</button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </section>
         </main>

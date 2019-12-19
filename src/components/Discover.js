@@ -81,15 +81,14 @@ const Discover = (props) => {
 
     return (
         <main>
-            <section className="my-2">
+            <section className="pt-3">
                 <form onSubmit={handleSearch}>
-                    <div className="form-row d-flex justify-content-center align-items-baseline">
+                    <div className="form-row d-flex align-items-baseline">
                         <div className="col-auto">
-                            <label htmlFor="year">Year</label>
-                            <input id="year" type="number" name="year" min="1920" max={props.releaseYear}placeholder="release year" defaultValue="2019" />
+                            <input id="year" type="number" name="year" min="1920" max={props.releaseYear}placeholder="Year" />
                         </div>
                         <div className="dropdown col-auto">
-                            <button type="button" className="dropdown-toggle btn btn-secondary" id="dropdownMenu" data-toggle="dropdown">
+                            <button type="button" className="dropdown-toggle" id="dropdownMenu" data-toggle="dropdown">
                                 Genre
                             </button>
                             <div className="dropdown-menu">
@@ -103,11 +102,12 @@ const Discover = (props) => {
                             </select>
                         </div>
                         <div className="col-auto">
-                            <button className="btn btn-secondary" type="submit">Search</button>
+                            <button className="btn btn-primary" type="submit">&#10140;</button>
                         </div>
                     </div>
                 </form >
             </section>
+            <hr />
             <DisplayMovies movieData={movieData} />
         </main>
     );

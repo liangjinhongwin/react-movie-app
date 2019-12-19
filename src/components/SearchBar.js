@@ -15,8 +15,8 @@ const SearchBar = (props) => {
     return (
         <div>
             <form onSubmit={handleSearch}>
-                <input type="text" name="title" placeholder="movie title" />
-                <button className="btn btn-secondary ml-1" type="submit">Search</button>
+                <input type="text" name="title" placeholder="Movie" required />
+                <button className="btn btn-primary ml-1" type="submit">Search</button>
             </form >
         </div>
     );

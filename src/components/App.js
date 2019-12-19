@@ -12,20 +12,23 @@ import Search from './Search';
 import Discover from './Discover';
 import Favourites from './Favourites';
 import Rated from './Rated';
+import "../styles/styles.css";
 
 const App = () => (
     <Router>
-        <div className="container">
+        <div className="wrapper">
             <Header />
-            <Switch>
-                <Route path="/" exact component={Home} />
-                <Route path="/movie/id=:id" exact component={Movie} />
-                <Route path="/discover" exact component={Discover} />
-                <Route path="/favourites" exact component={Favourites} />
-                <Route path="/rated" exact component={Rated} />
-                <Route path="/about" exact component={About} />
-                <Route path="/search/query=:title" exact component={Search} />
-            </Switch>
+            <div className="container">
+                <Switch>
+                    <Route path="/" exact component={Home} />
+                    <Route path="/movie/id=:id" exact component={Movie} />
+                    <Route path="/discover" exact component={Discover} />
+                    <Route path="/favourites" exact component={Favourites} />
+                    <Route path="/rated" exact component={Rated} />
+                    <Route path="/about" exact component={About} />
+                    <Route path="/search/query=:title" exact component={Search} />
+                </Switch>
+            </div>
             <Footer />
         </div>
     </Router>
