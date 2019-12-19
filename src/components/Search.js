@@ -24,6 +24,7 @@ const Search = (props) => {
             <section className="d-flex justify-content-end my-2">
                 <SearchBar handleSearchBar={handleSearchBar} />
             </section>
+            <hr />
             <section>
                 <DisplayMovies movieData={movieData} />
             </section>
