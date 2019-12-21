@@ -46,7 +46,7 @@ const Discover = (props) => {
 
     const handleCheck = (e) => {
         let newList = genreList;
-        newList.find(genre => genre.id === Number(e.target.name)).checked= e.target.checked;
+        newList.find(genre => genre.id === Number(e.target.name)).checked = e.target.checked;
         setGenreList(newList);
     }
 
@@ -85,7 +85,7 @@ const Discover = (props) => {
                 <form onSubmit={handleSearch}>
                     <div className="form-row d-flex align-items-baseline">
                         <div className="col-auto">
-                            <input id="year" type="number" name="year" min="1920" max={props.releaseYear}placeholder="Year" />
+                            <input id="year" type="number" name="year" min="1920" max={props.releaseYear} placeholder="Year" />
                         </div>
                         <div className="dropdown col-auto">
                             <button type="button" className="dropdown-toggle" id="dropdownMenu" data-toggle="dropdown">

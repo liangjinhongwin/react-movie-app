@@ -10,13 +10,15 @@ const DisplayMovies = (props) => {
                     <img className="card-img-top" src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt="poster" /> :
                     <img className="card-img-top" src={placeholder} alt="poster" />}
                 <div className="card-body">
-                    <h5 className="card-title">{movie.title}</h5>
+                    <div className="d-flex justify-content-between align-items-start">
+                        <h2 className="mr-2"><span className="badge badge-success">{movie.vote_average * 10}</span></h2>
+                        <div className="w-75">
+                            <h6 className="card-title m-0">{movie.title}</h6>
+                            <p className="m-0">{movie.release_date}</p>
+                        </div>
+                    </div>
                     <p className="card-text text-nowrap overflow-auto">{movie.overview}</p>
                 </div>
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item"><strong>Release date</strong>: {movie.release_date}</li>
-                    <li className="list-group-item"><strong>Rating</strong>: {movie.vote_average}</li>
-                </ul>
                 <div className="card-footer d-flex justify-content-center">
                     <Link to={{ pathname: `/movie/id=${movie.id}`, state: movie }}><button className="btn btn-outline-info">More Info</button></Link>
                 </div>

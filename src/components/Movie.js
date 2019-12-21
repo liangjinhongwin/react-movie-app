@@ -55,7 +55,7 @@ const Movie = (props) => {
         else {
             addToStorage(item);
         }
-        e.target.rating.value="";
+        e.target.rating.value = "";
     }
 
     // Create Storage
@@ -104,9 +104,9 @@ const Movie = (props) => {
                         <li className="list-group-item list-group-item-info text-center"><strong>{movie.title}</strong></li>
                         <li className="list-group-item">{movie.overview}</li>
                         <li className="list-group-item"><strong>Release date</strong>: {movie.release_date}</li>
-                        <li className="list-group-item"><strong>Rating</strong>: {movie.vote_average}</li>
+                        <li className="list-group-item"><strong>Rating</strong>: {movie.vote_average * 10}%</li>
                         {(liked === true) && <li className="list-group-item bg-warning"><strong>Your liked this movie!</strong></li>}
-                        {(rating !== "") && <li className="list-group-item bg-warning"><strong>Your Rating</strong>: {rating} (out of 10)</li>}
+                        {(rating !== "") && <li className="list-group-item bg-warning"><strong>Your Rating</strong>: {rating}%</li>}
                         <li className="list-group-item">
                             <form onSubmit={handleSubmit}>
                                 <div className="form-row d-flex justify-content-center">
@@ -116,11 +116,11 @@ const Movie = (props) => {
                                     </div>
                                     {(rating === "") ?
                                         <div className="col-auto">
-                                            <input type="number" name="rating" min="0" max="10" placeholder="Rating" required />
+                                            <input type="number" name="rating" min="0" max="100" placeholder="Rating" required />
                                             <button type="submit" className="btn btn-warning ml-1">&#10004; Rate</button>
                                         </div> :
                                         <div className="col-auto">
-                                            <input  type="number" className="d-none" name="rating" />
+                                            <input type="number" className="d-none" name="rating" />
                                             <button type="submit" className="btn btn-warning">&#10006; Remove rating</button>
                                         </div>
                                     }
