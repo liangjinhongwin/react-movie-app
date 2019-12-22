@@ -103,7 +103,7 @@ const Movie = (props) => {
                     <ul className="list-group list-group-flush">
                         <li className="list-group-item list-group-item-info text-center"><strong>{movie.title}</strong></li>
                         <li className="list-group-item">{movie.overview}</li>
-                        <li className="list-group-item"><strong>Release date</strong>: {movie.release_date}</li>
+                        <li className="list-group-item"><strong>Release</strong>: {movie.release_date}</li>
                         <li className="list-group-item"><strong>Rating</strong>: {movie.vote_average * 10}%</li>
                         {(liked === true) && <li className="list-group-item bg-warning"><strong>Your liked this movie!</strong></li>}
                         {(rating !== "") && <li className="list-group-item bg-warning"><strong>Your Rating</strong>: {rating}%</li>}
