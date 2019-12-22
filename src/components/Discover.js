@@ -39,7 +39,7 @@ const Discover = () => {
         const list = genreList.map((genre, i) =>
             <span className="dropdown-item" key={i}>
                 <input id={genre.name} type="checkbox" name={genre.id} onChange={handleCheck} />
-                <label htmlFor={genre.name} className="mr-2">{genre.name}</label>
+                <label htmlFor={genre.name}>{genre.name}</label>
             </span>);
         return list;
     }
@@ -83,12 +83,16 @@ const Discover = () => {
         <main>
             <section className="pt-3">
                 <form onSubmit={handleSearch}>
-                    <div className="form-row d-flex align-items-baseline">
+                    <div className="form-row d-flex flex-wrap">
                         <div className="col-auto">
                             <input id="year" type="number" name="year" min="1920" max={new Date().getFullYear()} placeholder="Year" defaultValue="2019" />
                         </div>
+                        <select className="col-auto" name="selectSorters">
+                            <option className="text-muted" value="">Sort By</option>
+                            {dropDownSorterMenu()}
+                        </select>
                         <div className="dropdown col-auto">
-                            <button type="button" className="dropdown-toggle" id="dropdownMenu" data-toggle="dropdown">
+                            <button type="button" className="btn btn-outline-dark btn-sm dropdown-toggle" id="dropdownMenu" data-toggle="dropdown">
                                 Genre
                             </button>
                             <div className="dropdown-menu">
@@ -96,13 +100,7 @@ const Discover = () => {
                             </div>
                         </div>
                         <div className="col-auto">
-                            <select name="selectSorters">
-                                <option value="">Sort By</option>
-                                {dropDownSorterMenu()}
-                            </select>
-                        </div>
-                        <div className="col-auto">
-                            <button className="btn btn-primary" type="submit">&#10140;</button>
+                            <button className="btn btn-primary btn-sm" type="submit">&#10140;</button>
                         </div>
                     </div>
                 </form >

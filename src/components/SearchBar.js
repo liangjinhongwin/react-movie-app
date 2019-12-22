@@ -14,9 +14,9 @@ const SearchBar = (props) => {
 
     return (
         <div>
-            <form onSubmit={handleSearch}>
+            <form className="d-flex flex-wrap" onSubmit={handleSearch}>
                 <input type="text" name="title" placeholder="Movie" required />
-                <button className="btn btn-primary ml-1" type="submit">Search</button>
+                <button className="btn btn-primary btn-sm ml-1" type="submit">Search</button>
             </form >
         </div>
     );

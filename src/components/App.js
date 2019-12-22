@@ -18,7 +18,7 @@ const App = () => (
     <Router>
         <div className="wrapper">
             <Header />
-            <div className="container">
+            <div className="container p-0">
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/discover" exact component={Discover} />

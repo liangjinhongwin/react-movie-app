@@ -4,7 +4,7 @@ import placeholder from '../images/not-found.png';
 
 const DisplayMovies = (props) => {
     const movies = props.movieData.map((movie, i) =>
-        <div className="col mb-3 px-2" key={i}>
+        <div className="col pb-3" key={i}>
             <div className="card h-100">
                 {(movie.poster_path) ?
                     <img className="card-img-top" src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt="poster" /> :
