@@ -20,7 +20,7 @@ const DisplayMovies = (props) => {
                     <div className="card-text text-nowrap overflow-auto">{movie.overview}</div>
                 </div>
                 <div className="card-footer d-flex justify-content-center">
-                    <Link to={{ pathname: `/movie/id=${movie.id}`, state: movie }}><button className="btn btn-outline-info">More Info</button></Link>
+                    <Link to={{ pathname: `/movie/id=${movie.id}`, state: movie }}><button className="btn btn-outline-info btn-sm">More Info</button></Link>
                 </div>
             </div>
         </div>

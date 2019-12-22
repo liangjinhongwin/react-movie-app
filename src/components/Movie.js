@@ -112,16 +112,16 @@ const Movie = (props) => {
                                 <div className="form-row d-flex justify-content-center">
                                     <div className="col-auto">
                                         <input className="d-none" id="checkbox-favourite" type="checkbox" checked={liked} onChange={handleCheck} />
-                                        {(liked === true) ? <label className="btn btn-danger" htmlFor="checkbox-favourite">&#10006; Unlike</label> : <label className="btn btn-danger" htmlFor="checkbox-favourite">&hearts; Like</label>}
+                                        {(liked === true) ? <label className="btn btn-danger btn-sm" htmlFor="checkbox-favourite">&#10006; Unlike</label> : <label className="btn btn-danger btn-sm" htmlFor="checkbox-favourite">&hearts; Like</label>}
                                     </div>
                                     {(rating === "") ?
-                                        <div className="col-auto">
+                                        <div className="col-auto d-flex align-items-start">
                                             <input type="number" name="rating" min="0" max="100" placeholder="Rating" required />
-                                            <button type="submit" className="btn btn-warning ml-1">&#10004; Rate</button>
+                                            <button type="submit" className="btn btn-warning btn-sm ml-1">&#10004; Rate</button>
                                         </div> :
                                         <div className="col-auto">
                                             <input type="number" className="d-none" name="rating" />
-                                            <button type="submit" className="btn btn-warning">&#10006; Remove rating</button>
+                                            <button type="submit" className="btn btn-warning btn-sm">&#10006; Remove rating</button>
                                         </div>
                                     }
                                 </div>
