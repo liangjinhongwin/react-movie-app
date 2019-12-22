@@ -14,7 +14,7 @@ const DisplayMovies = (props) => {
                         <h3 className="mr-2"><span className="badge badge-success">{movie.vote_average * 10}<small className="font-weight-light">%</small></span></h3>
                         <div className="w-75">
                             <h6 className="card-title m-0">{movie.title}</h6>
-                            <p className="text-muted m-0">{movie.release_date}</p>
+                            <small className="text-muted m-0">{movie.release_date}</small>
                         </div>
                     </div>
                     <div className="card-text text-nowrap overflow-auto">{movie.overview}</div>
@@ -30,7 +30,7 @@ const DisplayMovies = (props) => {
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
             {movies}
         </div>
-    )
+    );
 }
 
 export default DisplayMovies;

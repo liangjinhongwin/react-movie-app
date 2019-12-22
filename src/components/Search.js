@@ -5,6 +5,7 @@ import DisplayMovies from './DisplayMovies';
 const Search = (props) => {
     const [title, setTitle] = useState(props.match.params.title);
     const [movieData, setMovieData] = useState([]);
+    const subtitle = title.replace("+", " ");
 
     useEffect(() => {
         const fetchResults = async () => {
@@ -21,9 +22,12 @@ const Search = (props) => {
 
     return (
         <main>
-            <section className="d-flex justify-content-end my-2">
-                <SearchBar handleSearchBar={handleSearchBar} />
-            </section>
+            <div className="d-flex align-items-baseline pt-3">
+                <h5>Search > {subtitle}</h5>
+                <section className="d-flex justify-content-end ml-auto">
+                    <SearchBar handleSearchBar={handleSearchBar} />
+                </section>
+            </div>
             <hr />
             <section>
                 <DisplayMovies movieData={movieData} />

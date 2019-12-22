@@ -26,7 +26,7 @@ const Favourites = (props) => {
             setMovieData(movies);
         }
         getStorage('movies');
-    }, [])
+    }, []);
 
     return (
         <main className="pb-2">
@@ -39,6 +39,6 @@ const Favourites = (props) => {
             </section>
         </main>
     );
-};
+}
 
 export default Favourites;

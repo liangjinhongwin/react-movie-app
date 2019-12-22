@@ -38,6 +38,6 @@ const Rated = (props) => {
             </section>
         </main>
     );
-};
+}
 
 export default Rated;

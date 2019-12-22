@@ -22,7 +22,7 @@ const Movie = (props) => {
             setRating(item.rating);
         }
         getMovie('movies');
-    }, [movie.id])
+    }, [movie.id]);
 
     const handleSearchBar = (title) => {
         return props.history.push({ pathname: `/search/query=${title}` });
@@ -60,7 +60,7 @@ const Movie = (props) => {
 
     // Create Storage
     const createStorage = (initialItem) => {
-        let items = [initialItem]
+        let items = [initialItem];
         items = JSON.stringify(items);
         localStorage.setItem('movies', items);
     }
@@ -70,7 +70,7 @@ const Movie = (props) => {
         let items = localStorage.getItem('movies');
         items = JSON.parse(items);
         if (!items.find(item => item.movie.id === newItem.movie.id)) {
-            items.push(newItem)
+            items.push(newItem);
         }
         else {
             items.find(item => item.movie.id === newItem.movie.id).liked = newItem.liked;
@@ -105,8 +105,8 @@ const Movie = (props) => {
                         <li className="list-group-item">{movie.overview}</li>
                         <li className="list-group-item"><strong>Release</strong>: {movie.release_date}</li>
                         <li className="list-group-item"><strong>Rating</strong>: {movie.vote_average * 10}%</li>
-                        {(liked === true) && <li className="list-group-item bg-warning"><strong>Your liked this movie!</strong></li>}
-                        {(rating !== "") && <li className="list-group-item bg-warning"><strong>Your Rating</strong>: {rating}%</li>}
+                        {(liked === true) && <li className="list-group-item bg-success text-white">Your <strong>liked</strong> this movie!</li>}
+                        {(rating !== "") && <li className="list-group-item bg-success text-white">Your rating was <strong>{rating}</strong>%.</li>}
                         <li className="list-group-item">
                             <form onSubmit={handleSubmit}>
                                 <div className="form-row d-flex justify-content-center">
