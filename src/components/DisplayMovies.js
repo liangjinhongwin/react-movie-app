@@ -11,7 +11,7 @@ const DisplayMovies = (props) => {
                     <img className="card-img-top" src={placeholder} alt="poster" />}
                 <div className="card-body">
                     <div className="d-flex justify-content-between align-items-start">
-                        <h3 className="mr-2"><span className="badge badge-success">{movie.vote_average * 10}<small className="font-weight-light">%</small></span></h3>
+                        <h2 className="mr-2"><span className="badge badge-success">{movie.vote_average * 10}<small className="font-weight-light">%</small></span></h2>
                         <div className="w-75">
                             <h6 className="card-title m-0">{movie.title}</h6>
                             <small className="text-muted m-0">{movie.release_date}</small>

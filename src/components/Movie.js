@@ -25,7 +25,7 @@ const Movie = (props) => {
     }, [movie.id]);
 
     const handleSearchBar = (title) => {
-        return props.history.push({ pathname: `/search/query=${title}` });
+        return props.history.push({ pathname: `/search/movie/title=${title}` });
     }
 
     const handleCheck = (e) => {

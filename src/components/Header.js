@@ -14,13 +14,13 @@ const Header = () => (
                         <NavLink className="nav-link" to="/" exact>Home</NavLink>
                     </li>
                     <li className="nav-item" data-toggle="collapse" data-target="#navbarNav">
-                        <NavLink className="nav-link" to="/discover" exact>Discover</NavLink>
+                        <NavLink className="nav-link" to="/discover/movie" exact>Discover</NavLink>
                     </li>
                     <li className="nav-item" data-toggle="collapse" data-target="#navbarNav">
-                        <NavLink className="nav-link" to="/favourites" exact>My Favourites</NavLink>
+                        <NavLink className="nav-link" to="/movie/favourites" exact>My Favourites</NavLink>
                     </li>
                     <li className="nav-item" data-toggle="collapse" data-target="#navbarNav">
-                        <NavLink className="nav-link" to="/rated" exact>My Rated</NavLink>
+                        <NavLink className="nav-link" to="/movie/rated" exact>My Rated</NavLink>
                     </li>
                     <li className="nav-item" data-toggle="collapse" data-target="#navbarNav">
                         <NavLink className="nav-link" to="/about" exact>About</NavLink>

@@ -18,6 +18,7 @@ const Search = (props) => {
 
     const handleSearchBar = (title) => {
         setTitle(title);
+        return props.history.push({ pathname: `/search/movie/title=${title}` });
     }
 
     return (

@@ -6,7 +6,7 @@ const Favourites = (props) => {
     const [movieData, setMovieData] = useState([]);
 
     const handleSearchBar = (title) => {
-        return props.history.push({ pathname: `/search/query=${title}` });
+        return props.history.push({ pathname: `/search/movie/title=${title}` });
     }
 
     useEffect(() => {

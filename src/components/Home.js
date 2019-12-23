@@ -35,7 +35,7 @@ const Home = (props) => {
     }
 
     const handleSearchBar = (title) => {
-        return props.history.push({ pathname: `/search/query=${title}` });
+        return props.history.push({ pathname: `/search/movie/title=${title}` });
     }
 
     return (
