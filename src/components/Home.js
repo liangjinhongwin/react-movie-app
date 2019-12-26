@@ -27,10 +27,7 @@ const Home = (props) => {
     }
 
     const handleChangeDisplay = (e) => {
-        e.preventDefault();
-
-        let display = e.target.selectDisplays.value;
-        setDisplay(display);
+        setDisplay(e.target.value);
         setMovieData(movieData);
     }
 
@@ -40,13 +37,10 @@ const Home = (props) => {
 
     return (
         <main>
-            <section className="d-flex justify-content-between pt-3">
-                <div>
-                    <form className="d-flex flex-wrap" onSubmit={handleChangeDisplay}>
-                        <select name="selectDisplays">{dropDownDisplayMenu()}</select>
-                        <button className="btn btn-primary btn-sm ml-1" type="submit">&#10140;</button>
-                    </form>
-                </div>
+            <section className="d-flex flex-wrap justify-content-between pt-3">
+                <select onChange={handleChangeDisplay}>
+                    {dropDownDisplayMenu()}
+                </select>
                 <SearchBar handleSearchBar={handleSearchBar} />
             </section>
             <hr />
