@@ -23,9 +23,9 @@ const Search = (props) => {
 
     return (
         <main>
-            <div className="d-flex align-items-baseline pt-3">
-                <h5>Search > {subtitle}</h5>
-                <section className="d-flex justify-content-end ml-auto">
+            <div >
+                <section className="d-flex flex-wrap justify-content-between pt-3">
+                    <h5>Search > {subtitle}</h5>
                     <SearchBar handleSearchBar={handleSearchBar} />
                 </section>
             </div>
