@@ -28,9 +28,17 @@ const Discover = () => {
     }, [releaseYear, genres, sorter]);
 
     const dropDownSorterMenu = () => {
-        let array = ["vote_average.desc", "vote_average.asc", "primary_release_date.desc", "primary_release_date.asc", "original_title.desc", "original_title.asc"];
+        let array = [
+            { name: "Popularity", value: "popularity.desc" },
+            { name: "Rating Descending", value: "vote_average.desc" },
+            { name: "Rating Ascending", value: "vote_average.asc" },
+            { name: "Release Date Descending", value: "primary_release_date.desc" },
+            { name: "Release Date Ascending", value: "primary_release_date.asc" },
+            { name: "Title Descending", value: "original_title.desc" },
+            { name: "Title Ascending", value: "original_title.asc" }
+        ];
         const sorters = array.map((sorter, i) =>
-            <option key={i} value={sorter}>{sorter}</option>
+            <option key={i} value={sorter.value}>{sorter.name}</option>
         );
         return sorters;
     }
@@ -63,12 +71,7 @@ const Discover = () => {
             e.target.year.value = releaseYear;
         }
 
-        if (sort !== "") {
-            setSorter(sort);
-        }
-        else {
-            setSorter("popularity.desc");
-        }
+        setSorter(sort);
 
         for (let i = 0; i < genreList.length; i++) {
             if (genreList[i].checked === true) {
@@ -88,7 +91,6 @@ const Discover = () => {
                             <input id="year" type="number" name="year" min="1920" max={new Date().getFullYear()} placeholder="Year" defaultValue="2019" />
                         </div>
                         <select className="col-auto" name="selectSorters">
-                            <option className="text-muted" value="">Sort By</option>
                             {dropDownSorterMenu()}
                         </select>
                         <div className="dropdown col-auto">

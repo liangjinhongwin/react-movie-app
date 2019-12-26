@@ -20,9 +20,14 @@ const Home = (props) => {
     }, [display]);
 
     const dropDownDisplayMenu = () => {
-        let array = ["popular", "top_rated", "now_playing", "upcoming"];
+        let array = [
+            { name: "Popular", value: "popular" },
+            { name: "Top Rated", value: "top_rated" },
+            { name: "Now Playing", value: "now_playing" },
+            { name: "Upcoming", value: "upcoming" }
+        ];
         const displays = array.map((display, i) =>
-            <option key={i} value={display}>{display}</option>);
+            <option key={i} value={display.value}>{display.name}</option>);
         return displays;
     }
 
