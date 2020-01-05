@@ -6,7 +6,7 @@ const Footer = () => {
 
     return (
         <footer className="bg-dark pt-3 pb-1 text-center text-white">
-            <p>&copy; {year} Jinhong Liang</p>
+            <p>&copy; {year} Jinhong Liang and Alex Chen</p>
         </footer>
     );
 }
